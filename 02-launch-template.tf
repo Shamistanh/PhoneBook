@@ -11,7 +11,7 @@ resource "aws_launch_template" "app_node" {
 
   update_default_version = true
 
-  key_name = "danitse20211105"
+  key_name = "phone-app-key"
 
   network_interfaces {
     associate_public_ip_address = true
