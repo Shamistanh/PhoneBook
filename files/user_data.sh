@@ -70,10 +70,11 @@ mkdir -p /src/phonebook-app-front
 cd /src/phonebook-app-front
 
 ssh-keyscan github.com >> /root/.ssh/known_hosts
-git clone git@github.com:Shamistanh/PhoneBook-Step.git
+git clone git@github.com:Shamistanh/phoneBook-front.git
 
 cd PhoneBook-Step-Front
 
 docker build -t phone-book-front:v1.0.0
 docker run -di --name phone-book-front -p 80:80 my-app:v1.0.0
+
 
