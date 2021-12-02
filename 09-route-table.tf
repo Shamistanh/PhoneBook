@@ -19,12 +19,25 @@ resource "aws_route_table" "back-private" {
 
 resource "aws_route_table_association" "public" {
 
-  subnet_id = aws_subnet.front-public-phone-book.id
+  subnet_id = aws_subnet.front-public-phone-book-1.id
   route_table_id = aws_route_table.front-public.id
+}
+
+resource "aws_route_table_association" "public" {
+
+  subnet_id = aws_subnet.front-public-phone-book-2.id
+  route_table_id = aws_route_table.front-public.id
+}
+
+
+resource "aws_route_table_association" "private" {
+
+  subnet_id = aws_subnet.back-private-phone-book-1.id
+  route_table_id = aws_route_table.back-private.id
 }
 
 resource "aws_route_table_association" "private" {
 
-  subnet_id = aws_subnet.back-private-phone-book.id
+  subnet_id = aws_subnet.back-private-phone-book-2.id
   route_table_id = aws_route_table.back-private.id
 }

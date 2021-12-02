@@ -5,7 +5,7 @@ resource "aws_vpc" "main" {
     Name = "phone-book-vpc"
   }
 }
-resource "aws_subnet" "front-public-phone-book" {
+resource "aws_subnet" "front-public-phone-book-1" {
   cidr_block = "10.0.1.0/24"
   vpc_id = aws_vpc.main.id
   map_public_ip_on_launch = true
@@ -13,7 +13,22 @@ resource "aws_subnet" "front-public-phone-book" {
 
 }
 
-resource "aws_subnet" "back-private-phone-book" {
+resource "aws_subnet" "front-public-phone-book-2" {
+  cidr_block = "10.0.1.0/24"
+  vpc_id = aws_vpc.main.id
+  map_public_ip_on_launch = true
+  availability_zone = "us-east-1a"
+
+}
+
+resource "aws_subnet" "back-private-phone-book-1" {
+  cidr_block = "10.0.1.0/24"
+  vpc_id = aws_vpc.main.id
+  map_public_ip_on_launch = false
+  availability_zone = "us-east-1b"
+}
+
+resource "aws_subnet" "back-private-phone-book-2" {
   cidr_block = "10.0.1.0/24"
   vpc_id = aws_vpc.main.id
   map_public_ip_on_launch = false
