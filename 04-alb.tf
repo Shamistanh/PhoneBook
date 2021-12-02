@@ -8,8 +8,10 @@ resource "aws_lb" "pubic_alb" {
   ]
 
   subnets = [
-    aws_subnet.front-public-phone-book.id,
-    aws_subnet.back-private-phone-book.id
+    aws_subnet.back-private-phone-book-1,
+    aws_subnet.back-private-phone-book-2,
+    aws_subnet.front-public-phone-book-1,
+    aws_subnet.front-public-phone-book-2
   ]
 
   enable_deletion_protection = false

@@ -9,7 +9,6 @@ resource "aws_route_table" "front-public" {
 }
 resource "aws_route_table" "back-private" {
   vpc_id = aws_vpc.main.id
-  nat_gateway_id = aws_nat_gateway.ngw1.id
   route {
     cidr_block = "0.0.0.0/0"
     nat_gateway_id = aws_nat_gateway.ngw1.id
