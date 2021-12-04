@@ -6,8 +6,8 @@ resource "aws_autoscaling_group" "my-app" {
     "us-east-1b"
   ]
   desired_capacity = 2
-  max_size         = 2
-  min_size         = 10
+  max_size         = 10
+  min_size         = 2
 
   target_group_arns = [
     aws_lb_target_group.app.arn
