@@ -34,5 +34,9 @@ resource "aws_launch_template" "app_node" {
     }
   }
 
-  user_data = filebase64("files/user_data.sh")
+  user_data = templatefile("files/user_data.sh",
+  {
+    backend_url = aws_lb_listener.http.arn
+  }
+  )
 }

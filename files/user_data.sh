@@ -26,7 +26,8 @@ git clone git@github.com:Shamistanh/PhoneBook-Step.git
 cd PhoneBook-Step-Back
 
 docker build -t phone-book-back:v1.0.0
-docker run -di --name phone-book-back -p 80:80 my-app:v1.0.0
+docker run -di --name phone-book-back -p 80:80 phone-book-app-back:v1.0.0 -e DB_URL = ${db_url} -e DB_USERNAME = ${db_username}
+-e DB_PASSWORD = ${db_password}
 
 
 mkdir -p /src/phonebook-app-front
@@ -39,6 +40,6 @@ git clone git@github.com:Shamistanh/phoneBook-front.git
 cd PhoneBook-Step-Front
 
 docker build -t phone-book-front:v1.0.0
-docker run -di --name phone-book-front -p 80:80 my-app:v1.0.0
+docker run -di --name phone-book-front -p 80:80 phone-book-app-front:v1.0.0 -e BACKEND_URL = ${backend_url}
 
 
