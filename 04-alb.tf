@@ -8,8 +8,6 @@ resource "aws_lb" "pubic_alb" {
   ]
 
   subnets = [
-    aws_subnet.back-private-phone-book-1.id,
-    aws_subnet.back-private-phone-book-2.id,
     aws_subnet.front-public-phone-book-1.id,
     aws_subnet.front-public-phone-book-2.id
   ]
@@ -17,7 +15,29 @@ resource "aws_lb" "pubic_alb" {
   enable_deletion_protection = false
 
   tags = {
-    Name        = "alb-app"
+    Name        = "alb-app-public"
+    Environment = "production"
+  }
+}
+
+resource "aws_lb" "private_alb" {
+  name               = "private-alb"
+  internal           = false
+  load_balancer_type = "application"
+
+  security_groups    = [
+    aws_security_group.web.id
+  ]
+
+  subnets = [
+    aws_subnet.back-private-phone-book-1.id,
+    aws_subnet.back-private-phone-book-2.id
+  ]
+
+  enable_deletion_protection = false
+
+  tags = {
+    Name        = "alb-app-private"
     Environment = "production"
   }
 }
