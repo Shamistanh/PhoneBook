@@ -9,5 +9,3 @@ resource "aws_db_instance" "phone_book-app-db" {
   parameter_group_name = "default.mysql5.7"
   skip_final_snapshot  = true
 }
-user_data = templatefile("files/user_data.sh",{ db_url = "jdbc:mysql://${aws_db_instance.phone_book-app-db.address}:${aws_db_instance.phone_book-app-db.port}/${aws_db_instance.phone_book-app-db.name}",
-  db_username = aws_db_instance.phone_book-app-db.username, db_password = aws_db_instance.phone_book-app-db.password })

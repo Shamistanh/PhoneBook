@@ -36,7 +36,8 @@ resource "aws_launch_template" "app_node" {
 
   user_data = templatefile("files/user_data.sh",
   {
-    backend_url = aws_lb_listener.http.arn
+    backend_url = aws_lb_listener.http.arn, db_url = "jdbc:mysql://${aws_db_instance.phone_book-app-db.address}:${aws_db_instance.phone_book-app-db.port}/${aws_db_instance.phone_book-app-db.name}",
+  db_username = aws_db_instance.phone_book-app-db.username, db_password = aws_db_instance.phone_book-app-db.password
   }
   )
 }
